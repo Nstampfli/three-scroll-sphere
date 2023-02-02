@@ -1,23 +1,24 @@
-import * as THREE from 'three'
+import { Mesh, PerspectiveCamera, Scene, BufferGeometry,SphereGeometry, WebGLRenderer, MeshStandardMaterial, BoxGeometry, PointLight, AmbientLight, Group, BufferAttribute, PointsMaterial, Points  } from 'three'
+
 import Stats from 'three/examples/jsm/libs/stats.module'
 
-const scene = new THREE.Scene()
+const scene = new Scene()
 
-const camera = new THREE.PerspectiveCamera(
+const camera = new PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
     0.1,
     1000
 )
 
-const renderer = new THREE.WebGLRenderer()
+const renderer = new WebGLRenderer()
 renderer.setSize(window.innerWidth, window.innerHeight)
 document.body.appendChild(renderer.domElement)
 
-const boxGeometry = new THREE.BoxGeometry(0,0,0)
-const material = new THREE.MeshStandardMaterial()
+const boxGeometry = new BoxGeometry(0,0,0)
+const material = new MeshStandardMaterial()
 
-const cube = new THREE.Mesh(boxGeometry, material)
+const cube = new Mesh(boxGeometry, material)
 cube.position.set(0, 0.5, -10)
 scene.add(cube)
 
@@ -31,48 +32,48 @@ for(let i = 0; i < particlesCount; i++)
     positions[i * 3 + 2] = (Math.random() - 0.5) * 50
 }
 
-const particlesGeometry = new THREE.BufferGeometry()
-particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+const particlesGeometry = new BufferGeometry()
+particlesGeometry.setAttribute('position', new BufferAttribute(positions, 3))
 // Material
-const particlesMaterial = new THREE.PointsMaterial({
+const particlesMaterial = new PointsMaterial({
     color: '#ffeded',
     sizeAttenuation: true,
     size: 0.03
 })
 
 // Points
-const particles = new THREE.Points(particlesGeometry, particlesMaterial)
-const groupParticules = new THREE.Group()
+const particles = new Points(particlesGeometry, particlesMaterial)
+const groupParticules = new Group()
 
 groupParticules.add(particles)
 scene.add(groupParticules)
 
-const light = new THREE.AmbientLight( 0xaaaaaa ); // soft white light
+const light = new AmbientLight( 0xaaaaaa ); // soft white light
 scene.add( light );
 
-const pointLight = new THREE.PointLight( 0xaaaaaa, 1, 100 );
+const pointLight = new PointLight( 0xaaaaaa, 1, 100 );
 pointLight.position.set( 4, 2, 4 );
 scene.add( pointLight );
 
-const pointLight2 = new THREE.PointLight( 0xaaaaaa, 1, 100 );
+const pointLight2 = new PointLight( 0xaaaaaa, 1, 100 );
 pointLight2.position.set( -3, 3, 2 );
 scene.add( pointLight2 );
 
 
-const SphereGeometry = new  THREE.SphereGeometry(0.35, 32, 32);
+const SphereGeometry1 = new SphereGeometry(0.35, 32, 32);
 
-const material1 = new  THREE.MeshStandardMaterial({ color: '#06326c' });
-const material2 = new  THREE.MeshStandardMaterial({ color: '#031e41' });
-const material3 = new  THREE.MeshStandardMaterial({ color: '#01eb7b' });
+const material1 = new  MeshStandardMaterial({ color: '#06326c' });
+const material2 = new  MeshStandardMaterial({ color: '#031e41' });
+const material3 = new  MeshStandardMaterial({ color: '#01eb7b' });
 
-const sphere = new THREE.Mesh(SphereGeometry, material1)
-const sphere2 = new THREE.Mesh(SphereGeometry, material2)
-const sphere3 = new THREE.Mesh(SphereGeometry, material3)
+const sphere = new Mesh(SphereGeometry1, material1)
+const sphere2 = new Mesh(SphereGeometry1, material2)
+const sphere3 = new Mesh(SphereGeometry1, material3)
 
 sphere.position.set(0, 0.5, -5)
 sphere2.position.set(-1.1, 0.5, -5)
 sphere3.position.set(1.1, 0.5, -5)
-const group = new THREE.Group()
+const group = new Group()
 
 let lotSphere = []
 let lotSphere2 = []
@@ -88,19 +89,19 @@ function randomNum(min, max){
 
 
 for(let i=0; i<randomNum(8,16); i++) {
-    let a = new THREE.Mesh(SphereGeometry, material1)
+    let a = new Mesh(SphereGeometry1, material1)
     a.position.set(0, 0.5, -5)
     group.add(a)
     lotSphere.push(a)
 }
 for(let i=0; i<randomNum(8,16); i++) {
-    let b = new THREE.Mesh(SphereGeometry, material2)
+    let b = new Mesh(SphereGeometry1, material2)
     b.position.set(-1.1, 0.5, -5)
     group.add(b)
     lotSphere2.push(b)
 }
 for(let i=0; i<randomNum(8,16); i++) {
-    let c = new THREE.Mesh(SphereGeometry, material3)
+    let c = new Mesh(SphereGeometry1, material3)
     c.position.set(1.1, 0.5, -5)
     group.add(c)
     lotSphere3.push(c)
