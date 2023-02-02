@@ -1,7 +1,5 @@
 import { Mesh, PerspectiveCamera, Scene, BufferGeometry,SphereGeometry, WebGLRenderer, MeshStandardMaterial, BoxGeometry, PointLight, AmbientLight, Group, BufferAttribute, PointsMaterial, Points  } from 'https://unpkg.com/three@0.126.1/build/three.module.js';
 
-import Stats from 'three/examples/jsm/libs/stats.module'
-
 const scene = new Scene()
 
 const camera = new PerspectiveCamera(
@@ -324,9 +322,6 @@ document.body.onscroll = () => {
     ;(document.getElementById('scrollProgress')).style.width = `${scrollPercent.toFixed(2)}%`
 }
 
-const stats = Stats()
-document.body.appendChild(stats.dom)
-
 function animate() {
     requestAnimationFrame(animate)
 
@@ -336,7 +331,6 @@ function animate() {
 
     groupParticules.rotation.y += 0.0001
 
-    stats.update()
 }
 
 function render() {
