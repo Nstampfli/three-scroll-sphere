@@ -1,4 +1,4 @@
-import { Mesh, PerspectiveCamera, Scene, BufferGeometry,SphereGeometry, WebGLRenderer, MeshStandardMaterial, BoxGeometry, PointLight, AmbientLight, Group, BufferAttribute, PointsMaterial, Points  } from 'three';
+import { Mesh, PerspectiveCamera, Scene, BufferGeometry,SphereGeometry, WebGLRenderer, MeshStandardMaterial, BoxGeometry, PointLight, AmbientLight, Group, BufferAttribute, PointsMaterial, Points  } from 'https://unpkg.com/three@0.126.1/build/three.module.js';
 
 const scene = new Scene()
 
